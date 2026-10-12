@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee Management Form</h1>
+    Id:<input type="number" name="id"><br><br>
+    Name:<input type="text" name="name"><br><br>
+    Role:<input type="text" name="role"><br><br>
+    Salary:<input type="number" name="salary"><br><br>
+
+    <button onclick="addEmployee()">Add Employee</button>
+
+    <h2>Employee Table</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody id="employeeTableBody"></tbody>
+    </table>
+
+    <script>
+        function addEmployee() {
+            const idInput = document.querySelector('input[name="id"]');
+            const nameInput = document.querySelector('input[name="name"]');
+            const roleInput = document.querySelector('input[name="role"]');
+            const salaryInput = document.querySelector('input[name="salary"]');
+
+            const id = idInput.value.trim();
+            const name = nameInput.value.trim();
+            const role = roleInput.value.trim();
+            const salary = salaryInput.value.trim();
+
+            if (!id || !name || !role || !salary) {
+                alert("Please fill in all employee fields.");
+                return;
+            }
+
+            const row = document.createElement("tr");
+            row.innerHTML = `<td>${id}</td><td>${name}</td><td>${role}</td><td>${salary}</td>`;
+            document.getElementById("employeeTableBody").appendChild(row);
+
+            idInput.value = "";
+            nameInput.value = "";
+            roleInput.value = "";
+            salaryInput.value = "";
+        }
+    </script>
+</body>
+</html>
